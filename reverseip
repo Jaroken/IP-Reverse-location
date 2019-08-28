@@ -1,0 +1,16 @@
+# Load Libraries
+import geocoder
+from geopy.geocoders import Nominatim
+
+try:
+    g = geocoder.ip('me')
+    latlng = g.latlng
+    geolocator = Nominatim(user_agent="me")
+    location = geolocator.reverse(g.latlng)
+    address = location.address
+except:
+    print("failed to find location")
+    address = "unknown"
+    
+print(address)
+print(latlng)
